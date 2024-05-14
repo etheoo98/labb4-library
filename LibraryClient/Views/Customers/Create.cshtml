@@ -1,0 +1,12 @@
+@model LibraryClient.Models.ViewModels.CreateCustomerViewModel
+
+<form asp-action="Create" asp-controller="Customers" method="post" class="d-flex flex-column m-auto" style="max-width: 600px">
+    <h2 class="mb-3">Create New Customer</h2>
+    <label for="first-name">First Name</label>
+    <input class="mb-3" id="first-name" type="text" name="FirstName" placeholder="Clarabelle">
+
+    <label for="last-name">Last Name</label>
+    <input class="mb-3" id="last-name" type="text" name="LastName" placeholder="Cow">
+
+    <input class="btn btn-primary w-100" type="submit" value="Create"/>
+</form>

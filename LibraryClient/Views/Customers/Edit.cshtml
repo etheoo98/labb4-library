@@ -1,0 +1,14 @@
+@model LibraryClient.Models.ViewModels.EditCustomerViewModel
+
+<form asp-action="Edit" asp-controller="Customers" method="post" class="d-flex flex-column m-auto" style="max-width: 600px">
+    <h2 class="mb-3">Editing Customer: <strong>@Model.FirstName @Model.LastName</strong></h2>
+    <input type="hidden" name="Id" value="@Model.Id" />
+    
+    <label for="first-name">First Name</label>
+    <input class="mb-3" id="first-name" type="text" name="FirstName" value="@Model.FirstName">
+
+    <label for="last-name">Last Name</label>
+    <input class="mb-3" id="last-name" type="text" name="LastName" value="@Model.LastName">
+
+    <input class="btn btn-primary w-100" type="submit" value="Update"/>
+</form>

@@ -1,0 +1,70 @@
+@model LibraryClient.Models.ViewModels.CustomerLoansViewModel
+
+@{
+ViewData["Title"] = $"Loans - {Model.Customer.FirstName} {Model.Customer.LastName}";
+}
+
+<h2>@Model.Customer.FirstName @Model.Customer.LastName's Loans</h2>
+<a asp-action="Create" asp-controller="Loans" asp-route-id="@Model.Customer.Id" class="btn btn-outline-primary">New Loan</a>
+
+@foreach (var loan in Model.Loans.Where(l => l.ReturnDate == null))
+{
+    <div class="d-flex flex-row justify-content-between mt-4">
+        <h3>Loan Date: @loan.LoanDate</h3>
+        <a asp-action="Return" asp-controller="Loans" asp-route-id="@loan.Id" class="btn btn btn-outline-secondary">Return</a>
+    </div>
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        @foreach (var book in loan.Book)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Description</td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+}
+
+@foreach (var loan in Model.Loans.Where(l => l.ReturnDate != null))
+{
+    <div class="d-flex flex-column mt-4">
+        <h3>Loan Date: @loan.LoanDate</h3>
+        <h3>Return Date: @loan.ReturnDate</h3>
+    </div>
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        @foreach (var book in loan.Book)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Description</td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+}

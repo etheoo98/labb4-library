@@ -1,0 +1,13 @@
+@model LibraryClient.Models.ViewModels.CreateLoanViewModel
+
+<form asp-action="Create" asp-controller="Loans" method="post" class="d-flex flex-column m-auto" style="max-width: 600px">
+    <h2 class="mb-3">Create New Loan</h2>
+    <p>Use CTRL + Left Click to select multiple books</p>
+
+    <input asp-for="CustomerId" type="hidden" />
+
+    <label for="books">Books</label>
+    <select id="books" asp-for="BookIds" asp-items="ViewBag.Books" class="form-control" multiple></select>
+    
+    <input class="btn btn-primary w-100" type="submit" value="Create"/>
+</form>
